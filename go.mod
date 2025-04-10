@@ -3,23 +3,7 @@ module URL-Shortener-API
 go 1.20
 
 require (
-	github.com/KyleBanks/depth v1.2.1 
-	github.com/go-openapi/jsonpointer v0.19.5 
-	github.com/go-openapi/jsonreference v0.20.0 
-	github.com/go-openapi/spec v0.20.6 
-	github.com/go-openapi/swag v0.19.15 
-	github.com/golang-jwt/jwt/v5 v5.2.2 
-	github.com/gorilla/mux v1.8.1 
-	github.com/joho/godotenv v1.5.1 
-	github.com/josharian/intern v1.0.0 
-	github.com/lib/pq v1.10.9 
-	github.com/mailru/easyjson v0.7.6 
-	github.com/robfig/cron/v3 v3.0.1 
-	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe 
-	github.com/swaggo/http-swagger v1.3.4 
-	github.com/swaggo/swag v1.16.4 
-	golang.org/x/net v0.23.0 
-	golang.org/x/sys v0.18.0 
-	golang.org/x/tools v0.7.0 
-	gopkg.in/yaml.v2 v2.4.0 
+	github.com/gorilla/mux v1.8.1
+	github.com/lib/pq v1.10.9
+	github.com/robfig/cron/v3 v3.0.1
 )

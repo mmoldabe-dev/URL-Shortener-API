@@ -1,5 +1,5 @@
 # Используем официальный образ Go
-FROM golang:1.23 AS builder
+FROM golang:1.23
 
 # Устанавливаем рабочую директорию для приложения
 WORKDIR /app
@@ -10,11 +10,8 @@ COPY go.mod go.sum ./
 # Загружаем зависимости
 RUN go mod tidy
 
-# Копируем все остальные файлы проекта в контейнер
-COPY . .
+# Открываем порт
+EXPOSE 8080
 
-# Сборка приложения, указываем путь до main.go
-RUN go build -o main ./cmd
-
-# Запуск приложения
-CMD ["./main"]
+# Запуск приложения с go run
+CMD ["go", "run", "cmd/main.go"]

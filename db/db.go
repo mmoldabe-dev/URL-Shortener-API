@@ -10,22 +10,20 @@ import (
 )
 
 func InitDB(dbHost, dbPort, dbUser, dbPassword, dbName string) *sql.DB {
-	conn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", dbHost, dbPort, dbUser, dbPassword, dbName)
+	conn := fmt.Sprintf(
+		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
+		dbHost, dbPort, dbUser, dbPassword, dbName,
+	)
 
 	DB, err := sql.Open("postgres", conn)
 	if err != nil {
-		log.Fatal("Error opening DataBase!")
-		return nil
+		log.Fatal(err)
 	}
-	defer DB.Close()
-
-	err = DB.Ping()
-	if err != nil {
-		log.Fatal("Error ping DataBase")
-		return nil
+	if err := DB.Ping(); err != nil {
+		log.Fatal(err)
 	}
 
-	log.Println("DataBase conection established")
+	log.Println("Database connection established")
 	return DB
 }
 
@@ -35,8 +33,9 @@ func DeleteExpiredRecords(db *sql.DB) {
 
 	query := `
 	DELETE FROM urls
-		WHERE ttl_seconds IS NOT NULL
-		AND created_at + INTERVAL '1 second' * ttl_seconds < $1;
+ WHERE ttl_seconds IS NOT NULL
+   AND created_at + INTERVAL '1 second' * ttl_seconds < $1;
+
 	`
 	_, err := db.Exec(query, curentTime)
 	if err != nil {
