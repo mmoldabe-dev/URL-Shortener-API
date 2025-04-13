@@ -28,7 +28,6 @@ func InitDB(dbHost, dbPort, dbUser, dbPassword, dbName string) *sql.DB {
 }
 
 func DeleteExpiredRecords(db *sql.DB) {
-
 	curentTime := time.Now()
 
 	query := `

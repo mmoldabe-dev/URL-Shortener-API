@@ -9,7 +9,6 @@ const alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 func Base62Encode(number uint64) string {
 	if number == 0 {
 		return string(alphabet[0])
-
 	}
 	length := uint64(len(alphabet))
 	var encodeBuilder strings.Builder
@@ -25,9 +24,7 @@ func Base62Encode(number uint64) string {
 	runes := []rune(encoded)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
 		runes[i], runes[j] = runes[j], runes[i]
-
 	}
 
 	return string(runes)
-
 }

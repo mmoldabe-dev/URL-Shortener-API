@@ -6,3 +6,11 @@ CREATE TABLE IF NOT EXISTS urls (
     ttl_seconds INT,
     CONSTRAINT unique_short_code UNIQUE (short_code)
 );
+
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY, 
+    username VARCHAR(225) UNIQUE NOT NULL,
+    password_hash text not null, 
+    created_at TIMESTAMP DEFAULT NOW()
+);

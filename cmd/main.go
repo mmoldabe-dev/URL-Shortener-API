@@ -1,16 +1,16 @@
 package main
 
 import (
+	"log"
+
 	"URL-Shortener-API/config"
 	"URL-Shortener-API/db"
 	"URL-Shortener-API/router"
-	"log"
 
 	"github.com/robfig/cron/v3"
 )
 
 func main() {
-
 	cfg, err := config.LoadConfig()
 	if err != nil {
 		log.Fatal("Error read config")
@@ -24,7 +24,6 @@ func main() {
 	_, err = c.AddFunc("@hourly", func() {
 		db.DeleteExpiredRecords(DB)
 	})
-
 	if err != nil {
 		log.Fatal("Error adding cron job:", err)
 	}
@@ -35,5 +34,4 @@ func main() {
 	}()
 
 	select {}
-
 }

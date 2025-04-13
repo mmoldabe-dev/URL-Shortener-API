@@ -12,7 +12,7 @@ func TestBase62Encode(t *testing.T) {
 		{61, "Z"},
 		{62, "10"},
 		{125, "21"},
-		{3844, "100"}, // 62^2
+		{3844, "100"},
 	}
 
 	for _, test := range tests {
